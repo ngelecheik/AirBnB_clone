@@ -2,5 +2,5 @@
 
 
 def test:
-    """to pass tests"""
+"""to pass tests"""
     pass
