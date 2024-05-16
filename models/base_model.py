@@ -28,4 +28,5 @@ class BaseModel:
 
     def __str__(self):
         """print: [<class name>] (<self.id>) <self.__dict__>"""
-        return "[{}]({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}]({}) {}".format(self.__class__.__name__,
+                                    self.id, self.__dict__)
