@@ -9,8 +9,8 @@ class BaseModel:
     def __init__(self):
         'constructor of the class'
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
-        self.updated_at = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def save(self):
         """updates the public instance attribute updated_at
