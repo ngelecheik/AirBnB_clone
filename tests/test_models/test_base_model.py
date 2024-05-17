@@ -9,10 +9,9 @@ class TestBaseModel(unittest.TestCase):
     """Tests all classes and functionality"""
     def test_save(self):
         'test the save function'
-        basemodel = BaseModel()
-        intial_time = basemodel.updated_at
-        updated_time = basemodel.save()
-        self.assertNotEqual(intial_time, updated_time)
+        bm = BaseModel()
+        bm.save()
+        self.assertNotEqual(bm.updated_at, bm.created_at)
 
     def test_todict(self):
         'test the todict() function'
