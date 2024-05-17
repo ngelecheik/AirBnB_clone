@@ -18,3 +18,9 @@ class TestBaseModel(unittest.TestCase):
         'test the todict() function'
         basemodel = BaseModel()
         self.assertIn('__class__', basemodel.to_dict())
+
+    def test_id(self):
+        """Test if all the ids are different"""
+        bm1 = BaseModel()
+        bm2 = BaseModel()
+        self.assertNotEqual(bm1.id, bm2.id)
