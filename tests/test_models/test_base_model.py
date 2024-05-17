@@ -26,3 +26,8 @@ class TestBaseModel(unittest.TestCase):
         bm1 = BaseModel()
         bm2 = BaseModel()
         self.assertNotEqual(bm1.id, bm2.id)
+
+    def test_str(self):
+        """testing the str function when print is used"""
+        bm = BaseModel()
+
