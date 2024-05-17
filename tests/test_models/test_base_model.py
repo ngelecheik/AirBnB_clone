@@ -31,4 +31,5 @@ class TestBaseModel(unittest.TestCase):
         """testing the str function when print is used"""
         bm = BaseModel()
         print_str = bm.__str__()
+        self.assertIn(bm.__class__.__name__, print_str)
         self.assertIsInstance(print_str, str)
