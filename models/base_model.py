@@ -38,7 +38,7 @@ class BaseModel:
     def to_dict(self):
         """returns a dictionary containing
         all keys/values of __dict__ of the instance"""
-        my_dict = self.__dict__
+        my_dict = self.__dict__.copy()
         if isinstance(my_dict["created_at"], datetime):
             my_dict['created_at'] = (my_dict['created_at']).isoformat()
         if isinstance(my_dict['updated_at'], datetime):
