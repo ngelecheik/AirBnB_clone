@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
-from datetime import datetime
+from datetime import datetime, timedelta
 'This module is for testing'
 
 
@@ -12,7 +12,8 @@ class TestBaseModel(unittest.TestCase):
         'test the save function'
         bm = BaseModel()
         bm.save()
-        self.assertNotEqual(bm.updated_at, datetime.now())
+        self.assertAlmostEqual(
+            bm.updated_at, datetime.now(), delta=timedelta(seconds=1))
 
     def test_todict(self):
         'test the todict() function'
