@@ -108,9 +108,9 @@ class HBNBCommand(cmd.Cmd):
             return
         args = line.split()
         all_objs = storage.all()
-        if args[0] == "BaseModel":
+        if args[0] in globals():
             if len(args) >= 2:
-                key = f"BaseModel.{args[1]}"
+                key = f"{args[0]}.{args[1]}"
             else:
                 print("** instance id missing **")
                 return
@@ -124,10 +124,11 @@ class HBNBCommand(cmd.Cmd):
             if key in all_objs:
                 # get the object that I will change
                 changing_object = all_objs[key]
+                class_name = changing_object['__class__']
                 # reomve the present one
                 del all_objs[key]
                 # bring life to the object from dict
-                my_object = BaseModel(**changing_object)
+                my_object = globals()[class_name](**changing_object)
                 # set the third attribute with 4 value
                 value = args[3]
                 value = value.strip('"')
