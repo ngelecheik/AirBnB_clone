@@ -3,6 +3,7 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+import json
 
 
 class HBNBCommand(cmd.Cmd):
@@ -40,6 +41,33 @@ class HBNBCommand(cmd.Cmd):
                 return
             if key in all_objs:
                 print(str(all_objs[key]))
+            else:
+                print("** no instance found **")
+                return
+        else:
+            print("** class doesn't exist **")
+            return
+
+    def do_destroy(self, line):
+        """Prints the string representation of an
+         instance basedon the class name and id.
+          Ex: $ show BaseModel 1234-1234-1234"""
+        if not line:
+            print("** class name missing **")
+            return
+        args = line.split()
+        all_objs = storage.all()
+        if args[0] == "BaseModel":
+            if len(args) == 2:
+                key = f"BaseModel.{args[1]}"
+            else:
+                print("** instance id missing ** ")
+                return
+            if key in all_objs:
+                del all_objs[key]
+                objects_json = json.dumps(all_objs)
+                with open('file.json', 'w', encoding='utf-8') as f:
+                    f.write(objects_json)
             else:
                 print("** no instance found **")
                 return
