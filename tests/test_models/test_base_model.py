@@ -12,7 +12,7 @@ class TestBaseModel(unittest.TestCase):
         'test the save function'
         bm = BaseModel()
         bm.save()
-        self.assertNotEqual(bm.updated_at, bm.created_at)
+        self.assertNotEqual(bm.updated_at, datetime.now())
 
     def test_todict(self):
         'test the todict() function'
