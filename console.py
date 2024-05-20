@@ -2,6 +2,7 @@
 """This module is the entry point of the program"""
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 import json
 
@@ -17,8 +18,8 @@ class HBNBCommand(cmd.Cmd):
         if not line:
             print("** class name missing **")
             return
-        if line == "BaseModel":
-            my_model = BaseModel()
+        if line in globals():
+            my_model = globals()[line]()
             my_model.save()
             print(my_model.id)
         else:
@@ -33,14 +34,14 @@ class HBNBCommand(cmd.Cmd):
             return
         args = line.split()
         all_objs = storage.all()
-        if args[0] == "BaseModel":
+        if args[0] in globals():
             if len(args) == 2:
-                key = f"BaseModel.{args[1]}"
+                key = f"{args[0]}.{args[1]}"
             else:
                 print("** instance id missing **")
                 return
             if key in all_objs:
-                my_object_s = BaseModel(**all_objs[key])
+                my_object_s = globals()[args[0]](**all_objs[key])
                 print(str(my_object_s))
             else:
                 print("** no instance found **")
@@ -58,9 +59,9 @@ class HBNBCommand(cmd.Cmd):
             return
         args = line.split()
         all_objs = storage.all()
-        if args[0] == "BaseModel":
+        if args[0] in globals():
             if len(args) == 2:
-                key = f"BaseModel.{args[1]}"
+                key = f"{args[0]}.{args[1]}"
             else:
                 print("** instance id missing **")
                 return
@@ -82,10 +83,17 @@ class HBNBCommand(cmd.Cmd):
           the class name. Ex: $ all BaseModel or $ all"""
 
         all_objs = storage.all()
-        if line == "BaseModel" or not line:
+        if line in globals():
             all_list = []
             for value in all_objs.values():
-                new = BaseModel(**value)
+                new = globals()[line](**value)
+                all_list.append(str(new))
+            print(all_list)
+        elif not line:
+            all_list = []
+            for value in all_objs.values():
+                class_name = value['__class__']
+                new = globals()[class_name](**value)
                 all_list.append(str(new))
             print(all_list)
         else:
