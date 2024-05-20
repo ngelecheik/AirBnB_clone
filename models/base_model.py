@@ -32,7 +32,7 @@ class BaseModel:
     def save(self):
         """updates the public instance attribute updated_at
         with the current datetime"""
-        self.updated_at = datetime.now().isoformat()
+        self.updated_at = datetime.now()  # removed isoformat here some error might come
         storage.save()
 
     def to_dict(self):
