@@ -32,15 +32,18 @@ class BaseModel:
     def save(self):
         """updates the public instance attribute updated_at
         with the current datetime"""
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.now().isoformat()
         storage.save()
 
     def to_dict(self):
         """returns a dictionary containing
         all keys/values of __dict__ of the instance"""
         my_dict = self.__dict__
-        my_dict['created_at'] = my_dict['created_at'].isoformat()
-        my_dict['updated_at'] = my_dict['updated_at'].isoformat()
+        if isinstance(my_dict["created_at"], datetime):
+            my_dict['created_at'] = (my_dict['created_at']).isoformat()
+        if isinstance(my_dict['updated_at'], datetime):
+            my_dict['updated_at'] = (my_dict['updated_at']).isoformat()
+
         my_dict['__class__'] = self.__class__.__name__
         return my_dict
 
