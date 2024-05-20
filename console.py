@@ -49,9 +49,9 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def do_destroy(self, line):
-        """Prints the string representation of an
-         instance basedon the class name and id.
-          Ex: $ show BaseModel 1234-1234-1234"""
+        """Deletes an instance based on the class name and
+         id (save the change into the JSON file).
+          Ex: $ destroy BaseModel 1234-1234-1234."""
         if not line:
             print("** class name missing **")
             return
@@ -74,6 +74,21 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
             return
+
+    def do_all(self, line):
+        """Prints all string representation of
+         all instances based or not on
+          the class name. Ex: $ all BaseModel or $ all"""
+        all_list = []
+        if not line:
+            print("** class name missing **")
+            return
+        all_objs = storage.all()
+        if line == "BaseModel":
+            for value in all_objs.values():
+                new = BaseModel(**value)
+                all_list.append(str(new))
+        print(all_list)
 
     def do_quit(self, line):
         "Quit command to exit the program"
