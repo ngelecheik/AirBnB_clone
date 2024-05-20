@@ -9,3 +9,5 @@ class TestState(unittest.TestCase):
 
     def test_state_attribute(self):
         self.assertTrue(hasattr(State, "name"))
+        State.name = "kenya"
+        self.assertEqual(State.name, "kenya")
