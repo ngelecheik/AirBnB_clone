@@ -81,11 +81,8 @@ class HBNBCommand(cmd.Cmd):
          all instances based or not on
           the class name. Ex: $ all BaseModel or $ all"""
 
-        if not line:
-            print("** class name missing **")
-            return
         all_objs = storage.all()
-        if line == "BaseModel":
+        if line == "BaseModel" or not line:
             all_list = []
             for value in all_objs.values():
                 new = BaseModel(**value)
