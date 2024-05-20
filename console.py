@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
             if len(args) >= 2:
                 key = f"BaseModel.{args[1]}"
             else:
-                print("** instance id missing ** ")
+                print("** instance id missing **")
                 return
             if len(args) < 3:
                 print("** attribute name missing **")
