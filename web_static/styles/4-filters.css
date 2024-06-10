@@ -17,8 +17,11 @@ button {
 	width: 20%;
 	border: none;
 	border-radius: 4px;
-	opacity : 0.9;
+	opacity : 1;
 
 	position: absolute;
 	right: 30px;/*center vertically and at 30px of the right border*/
+}
+button:hover {
+	opacity : 0.9;
 }
