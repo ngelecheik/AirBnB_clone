@@ -28,19 +28,24 @@ button:hover {
 }
 
 .locations{
-	margin: 0;
-	padding-top: 20px;
-	padding-left: 20px;
+
+	-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 	width: 25%;
 	height: 100%;
 	border-right:1px solid #DDDDDD;
+	padding: 10px 20px;
+
 }
 
 .amenities {
-	padding-top : 20px;
-	padding-left: 20px;
+	-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 	width: 25%;
 	height: 100%;
+	padding: 10px 20px;
 }
 
 h3 {
