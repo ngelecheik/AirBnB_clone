@@ -1,0 +1,47 @@
+html {
+	font-family: sans-serif;
+}
+
+body {
+	margin:0;
+}
+
+header {
+	background: purple;
+	height: 100px;
+}
+/*
+ *
+ * Section
+ *
+ */
+
+section {
+	display : flex; 
+}
+
+
+
+/*
+ * Arcticle
+ *
+ */
+
+article {
+	padding : 10px;
+	margin : 10px;
+	background : aqua;
+}
+
+
+/*
+ * h1
+ *
+ */
+h1 {
+        text-align:center;
+        color: white;
+        line-height : 100px;
+        margin:0;
+}
+
