@@ -1,0 +1,23 @@
+.container {
+	display : grid;
+	grid-template-columns : repeat(4 ,1fr);
+	grid-template-rows: repeat(1 ,1fr);
+	gap : 20px;
+	background-color : white;
+}
+
+div {
+	background-color : lightblue;
+	border-radius: 5px;
+	padding: 20px;
+	border: 1px solid blue;
+}
+#subgrid {
+	grid-column: 1 / 4;
+	grid-row : 2 / 4;
+	display: grid;
+	gap: inherit;
+	grid-template-columns : repeat(3, 1fr);
+	grid-template-rows: 2 1fr;
+}
+
